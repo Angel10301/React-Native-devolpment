@@ -1,8 +1,9 @@
-import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
+import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';  // This import might be unnecessary if only used for type annotation
 import { PlatformPressable } from '@react-navigation/elements';
 import * as Haptics from 'expo-haptics';
+import React from 'react'
 
-export function HapticTab(props: BottomTabBarButtonProps) {
+export function HapticTab(props) {
   return (
     <PlatformPressable
       {...props}
