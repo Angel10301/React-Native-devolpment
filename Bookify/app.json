@@ -1,13 +1,14 @@
 {
   "expo": {
     "name": "Bookify",
-    "slug": "Bookify",
+    "slug": "bookify",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "bookify",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "tabs": ["Bookshelf", "pdfupload"],
     "ios": {
       "supportsTablet": true
     },
@@ -16,6 +17,9 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "permissions": [
+        "READ_EXTERNAL_STORAGE"
+      ],
       "edgeToEdgeEnabled": true
     },
     "web": {
