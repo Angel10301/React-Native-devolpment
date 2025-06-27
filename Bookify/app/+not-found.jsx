@@ -5,6 +5,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
 export default function NotFoundScreen() {
+  // Renders a 404 Not Found screen with a message and a link to the home screen.
   return (
     <>
       <Stack.Screen options={{ title: 'Oops!' }} />

@@ -55,7 +55,7 @@ export default function RootLayout() {
           options={{
             tabBarItemStyle: { display: 'none' }, // Hides the tab from the bar
           }}
-/>
+        />
       </Tabs>
       <StatusBar style="auto" />
     </ThemeProvider>
