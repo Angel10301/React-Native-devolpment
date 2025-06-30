@@ -8,7 +8,10 @@
     "scheme": "bookify",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "tabs": ["Bookshelf", "pdfupload"],
+    "tabs": [
+      "Bookshelf",
+      "pdfupload"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -19,9 +22,12 @@
       },
       "permissions": [
         "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "READ_EXTERNAL_STORAGE",
         "WRITE_EXTERNAL_STORAGE"
       ],
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.anonymous.bookify"
     },
     "web": {
       "bundler": "metro",

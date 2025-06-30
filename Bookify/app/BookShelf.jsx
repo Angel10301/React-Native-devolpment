@@ -6,13 +6,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage'; // AsyncSt
 // BookShelf component serves as the initial landing screen for "BookShelf" tab.
 const BookShelf = () => {
   const [pdfs, setPdfs] = useState([]);
-
+  // useEffect hook to load PDFs from AsyncStorage or FileSystem on component mount
   useEffect(() => {
     const loadPdfs = async () => {
       const storedPdfs = await AsyncStorage.getItem('uploadedPdfs');
       if (storedPdfs) setPdfs(JSON.parse(storedPdfs));
       else {
-        const files = await FileSystem.readDirectoryAsync(FileSystem.documentDirectory);
+        const files = await FileSystem.readDirectoryAsync(FileSystem.documentDirectory); // Read files from document directory
         const pdfFiles = files.filter(file => file.endsWith('.pdf'));
         const pdfUris = pdfFiles.map(file => `${FileSystem.documentDirectory}${file}`);
         await AsyncStorage.setItem('uploadedPdfs', JSON.stringify(pdfUris));
@@ -21,7 +21,7 @@ const BookShelf = () => {
     };
     loadPdfs();
   }, []); 
-  const renderItem = ({ item }) => (
+  const renderItem = ({ item }) => ( // Render each PDF item in the FlatList
     <View style={styles.item}>
       <Text style={styles.itemText}>{item.split('/').pop() || 'Untitled PDF'}</Text>
     </View>
@@ -32,19 +32,20 @@ const BookShelf = () => {
       <Text style={styles.subtitle}>Your Bookified PDFs</Text>
       <FlatList
         data={pdfs}
-        numColumns={3}
+        numColumns={2}
         columnWrapperStyle={{ justifyContent: 'space-between' }}
         contentContainerStyle={{ padding: 10 }}
         style={{ width: '100%' }}
         showsVerticalScrollIndicator={false}
         renderItem={renderItem}
+        
         keyExtractor={(item, index) => index.toString()}
         ListEmptyComponent={<Text style={styles.emptyText}>No PDFs uploaded yet.</Text>}
       />
     </View>
   );
 };
-// StyleSheet for HomeScreen component
+// StyleSheet for BookShelf component
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -62,6 +63,36 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     color: '#666',
+    fontStyle: 'italic',
+    marginBottom: 20,
+  },
+  item: {
+    width: '40%',
+    backgroundColor: '#fff',
+    padding: 15,
+    marginVertical: 8,
+    marginHorizontal: 5,
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  itemText: {
+    fontSize: 14,
+    color: '#333',
+    textAlign: 'center',
+    fontWeight: '500',
+  },
+  emptyText: {
+    fontSize: 16,
+    color: '#999',
+    textAlign: 'center',
+    marginTop: 50,
     fontStyle: 'italic',
   },
 });
